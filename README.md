@@ -37,6 +37,11 @@ It is generally known that the differential-drive wheel type is a non-holonomic 
 <p align="center">
   <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/d0913718-4d20-44ae-b42b-68ce0a39ecef">
 </p>
+
+ <p align="center">
+ <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/003a9526-d87f-4d01-8cba-22e01b6f4853">
+</p>
+
  <p align="center">
 Figure 3. differential-drive mobile robot in parameter
 </p>
