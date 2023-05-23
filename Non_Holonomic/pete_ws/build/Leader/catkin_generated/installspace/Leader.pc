@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/pete_ws/install
+
+Name: Leader
+Description: Description of Leader
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
