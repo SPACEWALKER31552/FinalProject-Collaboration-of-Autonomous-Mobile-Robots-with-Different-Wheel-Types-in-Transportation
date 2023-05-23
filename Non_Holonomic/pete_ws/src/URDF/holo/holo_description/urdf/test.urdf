@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="holo"xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0"/></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0"/></material>
+  <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0"/></material>
+  
+  <link name="base_footprint"></link>
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+  
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0152231861455379 -0.000658896853065293 0.00462791999209499"
+        rpy="0 0 0" />
+      <mass value="2.88777277561288" />
+      <inertia
+        ixx="0.00797084962401825"
+        ixy="8.52748529860987E-07"
+        ixz="1.52729383606489E-08"
+        iyy="0.0120968362106616"
+        iyz="-2.1642242280147E-09"
+        izz="0.0192370157537437" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="light_grey">
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://holo/holo_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="front_left_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.39499770284435E-05 0.0139727319091172 0.000143157356134856"
+        rpy="0 0 0" />
+      <mass value="0.214384874801475" />
+      <inertia
+        ixx="8.11116107745398E-05"
+        ixy="-3.51840310124305E-09"
+        ixz="-7.42437562435213E-10"
+        iyy="0.000138040069650481"
+        iyz="4.83909213339643E-09"
+        izz="8.11393331481548E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/fl_wheel.STL" />
+      </geometry>
+      <material name="dark_grey">    
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/fl_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="front_left_wheel_joint" type="revolute">
+    <origin xyz="0.16459 0.1563 -0.053988" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_left_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+  <link name="front_right_wheel_link">
+    <inertial>
+      <origin xyz="-1.13857938133233E-06 -0.0136728548332186 0.000402546759857299" rpy="0 0 0" />
+      <mass value="0.21438487480186" />
+      <inertia
+        ixx="8.1082875085575E-05"
+        ixy="-9.08915629734892E-12"
+        ixz="6.02319087273385E-10"
+        iyy="0.000138039806510861"
+        iyz="-2.1336799087962E-13"
+        izz="8.11680313284024E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/fr_wheel.STL" />
+      </geometry>
+      <material name="dark_grey">  
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://holo/holo_description/meshes/fr_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="front_right_wheel_joint" type="revolute">
+    <origin xyz="0.16459 -0.18924 -0.053988" rpy="3.1416 0 0" />
+    <parent link="base_link" />
+    <child link="front_right_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+  <link name="back_left_wheel_link">
+    <inertial>
+      <origin xyz="0.000402199221493926 0.0136728548332586 -1.67623526500446E-05" rpy="0 0 0" />
+      <mass value="0.214384874801844" />
+      <inertia
+        ixx="8.11680929101323E-05"
+        ixy="6.05238310369855E-13"
+        ixz="-2.70225305153216E-09"
+        iyy="0.000138040068679994"
+        iyz="9.17481040453078E-12"
+        izz="8.108309974878E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/bl_wheel.STL" />
+      </geometry>
+      <material name="dark_grey">
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/bl_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="back_left_wheel_joint" type="revolute">
+    <origin xyz="-0.17584 0.1563 -0.05397" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="back_left_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+  <link name="back_right_wheel_link">
+    <inertial>
+      <origin xyz="2.97057800492107E-05 -0.0139727318912169 -0.000140734494857936" rpy="0 0 0" />
+      <mass value="0.214384874803118" />
+      <inertia
+        ixx="8.11117254097731E-05"
+        ixy="2.96144652416428E-09"
+        ixz="-2.32448996986592E-09"
+        iyy="0.000138039953813258"
+        iyz="5.19855551498919E-09"
+        izz="8.11390955034462E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/br_wheel.STL" />
+      </geometry>
+      <material name="dark_grey">    
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://holo/holo_description/meshes/br_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="back_right_wheel_joint" type="revolute">
+    <origin xyz="-0.17562 -0.18989 -0.05414" rpy="3.1416 0 0" />
+    <parent link="base_link" />
+    <child link="back_right_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+  <gazebo>
+    <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>-->
+  
+    <plugin filename="libgazebo_ros_planar_move.so" name="holo_controller">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>100.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishTF>true</publishTF>
+    </plugin>
+  </gazebo>
+  
+  <gazebo reference="base_footprint">
+    <material>Gazebo/light_grey</material>
+    <gravity>true</gravity>
+  </gazebo>
+  <gazebo reference="base_link">
+    <material>Gazebo/light_grey</material>
+  </gazebo>
+  
+  <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
+  <gazebo reference="front_left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="front_right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="back_left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="back_right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+</robot>
