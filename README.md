@@ -53,9 +53,14 @@ Furthermore, when ordering a command, it must be ordered in the form of linear v
 
 
 Kinematic model of mecanum wheel mobile robot
- 
-Figure 4. mecanum wheel mobile robot in parameter
 
+ <p align="center">
+<img src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/40e2bdc5-0957-46e8-9d66-cdfa931fc496">
+</p>
+
+ <p align="center">
+Figure 4. mecanum wheel mobile robot in parameter
+</p>
 For mecanum wheel, it is a special type of wheel that can move up to three degrees of freedom, but there are some limitations, such as moving on rough surfaces, which is not suitable and may result in damaging to the wheels or skidding during some movement. And since there is a degree of freedom that is different from differential-drive mobile robots, the kinematic equation is also different. The kinematic model of a mecanum wheel mobile robot is described by the following equations:
 
 
