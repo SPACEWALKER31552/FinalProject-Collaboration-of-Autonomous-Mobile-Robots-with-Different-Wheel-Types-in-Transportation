@@ -51,6 +51,10 @@ Figure 3. differential-drive mobile robot in parameter
 Furthermore, when ordering a command, it must be ordered in the form of linear velocity and then converted through the calculation equation to get angular speed for PWM commands to differential-drive mobile robots. Therefore, distribute variables in an equation and shape the equation to achieve an angular velocity, which is as follows:
 
 
+ <p align="center">
+ <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/7ea4f69f-26f9-4942-a714-7ddf09aeab3d">
+</p>
+
 
 Kinematic model of mecanum wheel mobile robot
 
