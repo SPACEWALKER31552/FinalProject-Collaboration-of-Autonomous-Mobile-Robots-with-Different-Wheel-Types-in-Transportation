@@ -33,8 +33,10 @@ Figure 2. The Overall design of the non-holonomic robot
 Kinematic Model of differential-drive mobile robot
 It is generally known that the differential-drive wheel type is a non-holonomic type of AMR because it can move only two degrees of freedom in plane. The kinematic model of a differential-drive mobile robot is described by the following equations:
 
-[■(x ̇@y ̇@θ ̇ )]=[■((r_L  cos⁡θ)/2&(r_R  cos⁡θ)/2@(r_L  sin⁡θ)/2&(r_R  sin⁡θ)/2@-r_L/2b&r_R/2b)][■(φ ̇_L@φ ̇_R )]	(1)
 
+<p align="center">
+  <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/d0913718-4d20-44ae-b42b-68ce0a39ecef">
+</p>
  
 
 Figure 3. differential-drive mobile robot in parameter
