@@ -75,4 +75,6 @@ For mecanum wheel, it is a special type of wheel that can move up to three degre
 
 Same as differential-drive wheel model, to command the robot. The command must be ordered in the form of linear velocity. Therefore, the inverse kinematic must be performed from the above equation to achieve an angular velocity, which is as follows:
 
-[■(ω_1@ω_2@ω_3@ω_4 )]=1/r [■(1&-1&-(l_x+l_y)@1&1&(l_x+l_y)@1&1&-(l_x+l_y)@1&-1&(l_x+l_y))][■(v_x@v_y@ω_z )]	(4)
+ <p align="center">
+<img src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/60faa003-b5ee-4232-ba8d-f3ba0a055f4f">
+</p>
