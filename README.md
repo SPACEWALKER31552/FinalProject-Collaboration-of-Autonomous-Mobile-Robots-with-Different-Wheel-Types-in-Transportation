@@ -17,15 +17,18 @@ The group of AMRs in this study consists of two holonomic AMRs with mecanum whee
  
 <p align="center">
   <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/743a787f-a58c-448d-848a-5ee7d504901a">
+</p>
+<p align="center">
 Figure 1. The Overall design of the non-holonomic robot
 </p>
 
  
 <p align="center">
   <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/400eea55-fbfe-43a9-8811-e44eb573720e">
+</p>
+<p align="center">
 Figure 2. The Overall design of the non-holonomic robot
 </p>
-
 
 Kinematic Model of differential-drive mobile robot
 It is generally known that the differential-drive wheel type is a non-holonomic type of AMR because it can move only two degrees of freedom in plane. The kinematic model of a differential-drive mobile robot is described by the following equations:
