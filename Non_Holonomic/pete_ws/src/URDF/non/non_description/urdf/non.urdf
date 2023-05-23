@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="non"xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0"/></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0"/></material>
+  <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0"/></material>
+  
+  <link name="base_footprint"></link>
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0206901197551754 -1.27048075674319E-05 -0.024985130325309" rpy="0 0 0" />
+      <mass value="4.2259789874892" />
+      <inertia
+        ixx="0.0405271020441637"
+        ixy="2.62638993629904E-07"
+        ixz="2.94726171996408E-09"
+        iyy="0.0342449774322416"
+        iyz="-1.90622214384226E-09"
+        izz="0.0739089051586613" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <meshfilename="package://non_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_wheel_link">
+    <inertial>
+      <origin xyz="-1.11022302462516E-16 -0.0099999999999999 0" rpy="0 0 0" />
+      <mass value="0.172530421663568" />
+      <inertia
+        ixx="0.000136173124630135"
+        ixy="1.64399906935272E-18"
+        ixz="2.81325095681818E-22"
+        iyy="0.000262751529741945"
+        iyz="-2.44362684100325E-19"
+        izz="0.000136173124630135" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_left.STL" />
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_wheel_joint" type="revolute">
+    <origin xyz="0.010229 0.278 -0.0549" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="left_wheel_link" />
+    <axis xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link name="right_wheel_link">
+    <inertial>
+      <origin xyz="1.11022302462516E-16 0.01 2.88657986402541E-15" rpy="0 0 0" />
+      <mass value="0.172530421663567" />
+      <inertia
+        ixx="0.000136173124630134"
+        ixy="1.64925929693813E-18"
+        ixz="2.03387324110904E-20"
+        iyy="0.000262751529741944"
+        iyz="-1.29408353917935E-19"
+        izz="0.000136173124630134" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_right.STL" />
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_wheel_joint" type="revolute">
+    <origin xyz="0.010229 -0.278 -0.0549" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="right_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <gazebo>
+    <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>-->
+  
+    <plugin filename="libgazebo_ros_diff_drive.so" name="non_controller">
+    <!-- Plugin update rate in Hz -->
+    <updateRate>100</updateRate>
+
+    <!-- Name of left joint, defaults to `left_joint` -->
+    <leftJoint>left_wheel_joint</leftJoint>
+
+    <!-- Name of right joint, defaults to `right_joint` -->
+    <rightJoint>right_wheel_joint</rightJoint>
+
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <wheelSeparation>0.55</wheelSeparation>
+
+    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+    <wheelDiameter>0.12</wheelDiameter>
+
+    <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+    <wheelAcceleration>0.0</wheelAcceleration>
+
+    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+    <wheelTorque>5</wheelTorque>
+
+    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+    <commandTopic>cmd_vel</commandTopic>
+
+    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+    <odometryTopic>odom</odometryTopic>
+
+    <!-- Odometry frame, defaults to `odom` -->
+    <odometryFrame>odom</odometryFrame>
+
+    <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+
+    <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+    <odometrySource>1</odometrySource>
+
+    <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+    <publishWheelTF>true</publishWheelTF>
+
+    <!-- Set to true to publish transforms for the odometry, defaults to true -->
+    <publishOdom>true</publishOdom>
+
+    <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+    <publishWheelJointState>true</publishWheelJointState>
+
+    <!-- Set to true to swap right and left wheels, defaults to true -->
+    <legacyMode>true</legacyMode>
+  </plugin>
+
+ <gazebo reference="base_footprint">
+    <material>Gazebo/light_grey</material>
+    <gravity>true</gravity>
+ </gazebo>
+  
+ <gazebo reference="base_link">
+    <material>Gazebo/light_grey</material>
+ </gazebo>
+ 
+ <gazebo reference="left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+  
+ <gazebo reference="right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+</robot>

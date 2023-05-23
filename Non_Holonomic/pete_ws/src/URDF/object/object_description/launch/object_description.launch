@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+	<param name="object_description" command="$(find xacro)/xacro --inorder $(find object_description)/urdf/object.xacro" />
+</launch>
