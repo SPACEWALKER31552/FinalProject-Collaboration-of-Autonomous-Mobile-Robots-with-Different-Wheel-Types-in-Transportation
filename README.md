@@ -37,9 +37,12 @@ It is generally known that the differential-drive wheel type is a non-holonomic 
 <p align="center">
   <img  src="https://github.com/SPACEWALKER31552/Collaboration_of_Autonomous_Mobile_Robots_with_Different_Wheel_Types_in_Transportation/assets/109845426/d0913718-4d20-44ae-b42b-68ce0a39ecef">
 </p>
- 
-
+ <p align="center">
 Figure 3. differential-drive mobile robot in parameter
+</p>
+
+
+
 Furthermore, when ordering a command, it must be ordered in the form of linear velocity and then converted through the calculation equation to get angular speed for PWM commands to differential-drive mobile robots. Therefore, distribute variables in an equation and shape the equation to achieve an angular velocity, which is as follows:
 
 
