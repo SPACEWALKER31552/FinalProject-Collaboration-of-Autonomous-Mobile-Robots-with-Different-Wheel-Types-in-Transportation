@@ -1,0 +1,24 @@
+<launch>
+				<!--  ************** Odometry ***************  -->
+	<arg name="gui" default="True" />
+
+	<include file="$(find non_description)/launch/non_description.launch"/>
+
+	<node name="serial_nodeleader" pkg="rosserial_python" type="serial_node.py">
+		<param name="port" value="/dev/ttyACM0"/>
+	</node>
+		
+	<node name="joint_state_publisherleader" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+
+	<node name="leader_controller" pkg="leader" type="leadercontroller">
+		<param name="publish_tf" value="true" />
+    		<param name="publish_rate" value="10.0" />
+    		<param name="linear_scale_positive" value="1.025" />
+    		<param name="linear_scale_negative" value="1.025" />
+    		<param name="angular_scale_positive" value="1.078" />
+    		<param name="angular_scale_negative" value="1.078" />
+		<param name="angular_scale_accel" value="0.0" />
+	</node>
+	
+</launch>
