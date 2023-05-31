@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find object_description)/launch/object_description.launch" />
+	
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_description)/urdf.rviz" required="true" />
+</launch>

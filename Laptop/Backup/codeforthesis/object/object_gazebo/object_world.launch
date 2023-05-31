@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default="object" />
+  <arg name="pose_x" default="1" />
+  <arg name="pose_y" default="1" />
+  <arg name="pose_z" default="0" />
+
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <arg name="paused" value="false"/>
+  </include>
+
+<!-- Load robot description -->
+<include file="$(find object_description)/launch/object_description.launch" />
+
+<!-- Spawn the robot -->
+<node name="spawn_object" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -x $(arg pose_x) -y $(arg pose_y) -z $(arg pose_z) -model object" respawn="false" output="screen" />
+
+</launch>

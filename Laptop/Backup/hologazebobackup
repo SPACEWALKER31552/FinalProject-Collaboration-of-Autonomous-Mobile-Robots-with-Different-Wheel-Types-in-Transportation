@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot>
+
+  <gazebo>
+
+    <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>-->
+  
+     <plugin filename="libgazebo_ros_planar_move.so" name="holo_controller">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryRate>100.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <leftJoint>front_left_wheel_link</leftJoint>
+      <rightJoint>front_right_wheel_link</rightJoint>
+      <publishTF>true</publishTF>
+    </plugin>
+
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <alwaysOn>true</alwaysOn>
+      <bodyName>base_footprint</bodyName>
+      <topicName>imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>100.0</updateRate>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="base_footprint">
+    <material>Gazebo/light_grey</material>
+    <gravity>true</gravity>
+  </gazebo>
+  <gazebo reference="base_link">
+    <material>Gazebo/light_grey</material>
+  </gazebo>
+  
+  <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
+  <gazebo reference="front_left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="front_right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="back_left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="back_right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+</robot>

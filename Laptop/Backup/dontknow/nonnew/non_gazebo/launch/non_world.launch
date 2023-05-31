@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default="non" />
+  <arg name="pose_x" default="0" />
+  <arg name="pose_y" default="0" />
+  <arg name="pose_z" default="0" />
+
+
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="debug" default="false"/>
+  <!-- <arg name="world_name" default="$(find nexus_gazebo)/worlds/nexus_4wd_mecanum.world" /> -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <arg name="paused" value="false"/>
+    <arg name="debug" value="$(arg debug)" />
+  </include>
+
+<!-- Load robot description -->
+<include file="$(find non_description)/launch/non_description.launch" />
+
+  <!-- Spawn the robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -model $(arg robot_name) -param robot_description -x $(arg pose_x) -y $(arg pose_y) -z $(arg pose_z)" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controllerdiff_drive_controller"/>
+</launch>

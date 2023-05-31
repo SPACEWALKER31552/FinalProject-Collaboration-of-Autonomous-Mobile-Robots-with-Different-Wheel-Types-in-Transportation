@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot>
+  <gazebo>
+    <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>-->
+  
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    	<alwaysOn>true</alwaysOn>
+    	<legacyMode>false</legacyMode>
+    	<updateRate>40</updateRate>
+    	<leftJoint>left_wheel_joint</leftJoint>
+    	<rightJoint>right_wheel_joint</rightJoint>
+    	<wheelSeparation>0.55</wheelSeparation>
+    	<wheelDiameter>0.12</wheelDiameter>   
+    	<torque>20</torque>
+    	<commandTopic>cmd_vel</commandTopic>
+    	<odometryTopic>odom</odometryTopic>
+    	<odometryFrame>odom</odometryFrame>
+    	<publishTF>true</publishTF>
+    	<robotBaseFrame>base_footprint</robotBaseFrame>
+    	<publishWheelTF>false</publishWheelTF>
+    	<publishOdomTF>true</publishOdomTF>
+    	<publishWheelJointState>false</publishWheelJointState>
+    	<wheelAcceleration>0</wheelAcceleration>
+    	<wheelTorque>5</wheelTorque>
+    	<odometrySource>true</odometrySource>
+  	</plugin>
+  </gazebo>
+
+ <gazebo reference="base_footprint">
+    <material>Gazebo/light_grey</material>
+    <gravity>true</gravity>
+ </gazebo>
+  
+ <gazebo reference="base_link">
+    <material>Gazebo/light_grey</material>
+ </gazebo>
+ 
+ <gazebo reference="left_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+  
+ <gazebo reference="right_wheel_link">
+    <material>Gazebo/dark_grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ 
+</robot>

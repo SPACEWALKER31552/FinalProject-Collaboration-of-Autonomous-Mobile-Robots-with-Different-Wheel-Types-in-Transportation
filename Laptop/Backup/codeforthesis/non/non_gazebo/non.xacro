@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<robot name="non" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0"/></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0"/></material>
+  <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0"/></material>
+
+  <link name="base_footprint"></link>
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+  
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0206901197551754 -1.27048075674319E-05 -0.024985130325309" rpy="0 0 0" />
+      <mass value="4.2259789874892" />
+      <inertia ixx="0" ixy="0" ixz="0"
+               iyy="0" iyz="0"
+               izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_wheel_link">
+    <inertial>
+      <origin xyz="-1.11022302462516E-16 -0.0099999999999999 0" rpy="0 0 0" />
+      <mass value="0.172530421663568" />
+      <inertia ixx="0" ixy="0" ixz="0"
+               iyy="0" iyz="0"
+               izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_left.STL" />
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0.010229 0.278 -0.0549" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="left_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link name="right_wheel_link">
+    <inertial>
+      <origin xyz="1.11022302462516E-16 0.01 2.88657986402541E-15" rpy="0 0 0" />
+      <mass value="0.172530421663567" />
+      <inertia ixx="0" ixy="0" ixz="0"
+               iyy="0" iyz="0"
+               izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_right.STL" />
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://non_description/meshes/link_wheel_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0.010229 -0.278 -0.0549" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="right_wheel_link" />
+    <axis xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+    <joint name="scan_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_scan"/>
+    <origin xyz="0.0 0 0.25" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_scan">
+    <visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://turtlebot3_description/meshes/sensors/lds.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+  </link>
+  <!-- Include controller plugin for Gazebo -->
+  <xacro:include filename="$(find non_description)/urdf/non.gazebo" />
+
+</robot>

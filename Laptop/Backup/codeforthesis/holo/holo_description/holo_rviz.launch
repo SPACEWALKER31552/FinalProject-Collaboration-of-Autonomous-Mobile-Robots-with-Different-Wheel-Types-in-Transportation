@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find holo_description)/launch/holo_description.launch" />
+	
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find holo_description)/urdf.rviz" required="true" />
+</launch>
