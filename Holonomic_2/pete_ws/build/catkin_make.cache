@@ -1,0 +1,2 @@
+holo/holo_description:holo/holo_gazebo:rosserial/rosserial:rosserial/rosserial_arduino:rosserial/rosserial_chibios:rosserial/rosserial_client:rosserial/rosserial_embeddedlinux:rosserial/rosserial_mbed:rosserial/rosserial_msgs:rosserial/rosserial_python:rosserial/rosserial_server:rosserial/rosserial_test:rosserial/rosserial_tivac:rosserial/rosserial_vex_cortex:rosserial/rosserial_vex_v5:rosserial/rosserial_windows:rosserial/rosserial_xbee:slave:slavedrive
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/pete_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/pete_ws/install -G Unix Makefiles
