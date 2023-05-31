@@ -1,0 +1,45 @@
+
+<launch>
+  <arg name="model" default="burger"/>
+  <arg name="x_pos" default="5.0"/>
+  <arg name="y_pos" default="-7.5"/>
+  <arg name="z_pos" default="0.0"/>
+  <arg name="robot_name" default="non1" />
+  <remap from="odom" to="non1/odom" />
+  
+  <node name="odompy" pkg="odomforgazebo" type="odomlis.py"/> 
+  <node name="masterkinematicgazebo" pkg="masterkinematic2" type="masterkinematicgazebo"/> 
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+  <!--<node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+  <param name="robot_description" command="$(find xacro)/xacro inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />-->
+ 
+  <!-- Spawn the robot -->
+  <include file="$(find non_description)/launch/non_description.launch" />
+  <node name="spawn_urdf2" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -model $(arg robot_name) -param robot_description -x 4.6 -y -7.5 -z 0.0" />
+
+  <!-- spawn "holo2" robot -->
+  <include file="$(find holo_gazebo)/launch/spawn_one_holo.launch">
+    <arg name="robot_name" value="holo2" />
+    <arg name="pose_x" value="3.4" />
+    <arg name="pose_y" value="-6.935" />
+  </include>
+  
+    <!-- spawn "holo3" robot -->
+  <include file="$(find holo_gazebo)/launch/spawn_one_holo.launch">
+    <arg name="robot_name" value="holo3" />
+    <arg name="pose_x" value="3.4" />
+    <arg name="pose_y" value="-8.065" />
+  </include>
+
+</launch>
