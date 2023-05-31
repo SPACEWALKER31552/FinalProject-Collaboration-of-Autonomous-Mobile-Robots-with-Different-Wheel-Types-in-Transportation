@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="masterkinematicholo" pkg="masterkinematic" type="masterkinematicholo.py"/>
+
+
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <!-- <arg name="world_name" default="$(find holo_gazebo)/worlds/holo.world" /> -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <arg name="paused" value="false"/>
+  </include>
+  
+  <!-- spawn "non1" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non1" />
+    <arg name="pose_x" value="0.82" />
+    <arg name="pose_y" value="0" />
+  </include>
+
+  <!-- spawn "non2" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non2" />
+    <arg name="pose_x" value="-0.76" />
+    <arg name="pose_y" value="0.565" />
+  </include>
+  
+    <!-- spawn "holo3" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non3" />
+    <arg name="pose_x" value="-0.76" />
+    <arg name="pose_y" value="-0.565" />
+  </include>
+
+</launch>

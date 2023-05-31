@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <node name="odomspeed" pkg="odomspeed" type="odomspeed"/>
+  
+  <node name="metalsheetserial_node" pkg="rosserial_python" type="serial_node.py">
+		<param name="port" value="/dev/ttyACM0"/>
+  </node>
+   
+  <node name="odomsteelplate" pkg="odomsteelplate" type="odomsteelplate"/>
+  
+    <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <!-- <arg name="world_name" default="$(find holo_gazebo)/worlds/holo.world" /> -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <arg name="paused" value="false"/>
+  </include>
+  
+  <!-- spawn "non1" robot -->
+  <include file="$(find holo_gazebo)/launch/spawn_one_holo.launch">
+    <arg name="robot_name" value="holo1" />
+    <arg name="pose_x" value="0.82" />
+    <arg name="pose_y" value="0" />
+  </include>
+
+  <include file="$(find holo_gazebo)/launch/spawn_one_holo.launch">
+    <arg name="robot_name" value="holo3" />
+    <arg name="pose_x" value="-0.78" />
+    <arg name="pose_y" value="-0.565" />
+  </include>
+  
+  <include file="$(find holo_gazebo)/launch/spawn_one_holo.launch">
+    <arg name="robot_name" value="holo2" />
+    <arg name="pose_x" value="-0.78" />
+    <arg name="pose_y" value="0.565" />
+  </include>
+</launch>

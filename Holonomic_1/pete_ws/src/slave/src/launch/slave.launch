@@ -1,0 +1,17 @@
+<launch>
+
+	<arg name="robot_name"/>
+	<arg name="model" default="holo"/>
+	
+  	<node name="serial_nodeslave" pkg="rosserial_python" type="serial_node.py">
+  		<param name="port" value="/dev/ttyACM0"/>
+  	</node>	
+
+
+  	<node name="slavedrive" pkg="slavedrive" type="slavedrive" output="screen"/>
+  
+  	<include file="$(find holo_description)/launch/holo_description.launch" />
+  	<node name="joint_state_publisher_guislave" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  	<node name="joint_state_publisherslave" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+</launch>

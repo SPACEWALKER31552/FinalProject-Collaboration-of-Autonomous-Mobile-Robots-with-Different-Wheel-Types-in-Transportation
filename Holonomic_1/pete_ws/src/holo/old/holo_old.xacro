@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="holo"xmlns:xacro="http://ros.org/wiki/xacro">
+  	<material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
+ 	<material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
+  	<material name="light_grey"><color rgba="0.4 0.4 0.4 1.0" /></material>
+
+	<xacro:macro name="omni_steering" params="">
+		<gazebo>
+		<plugin name="omni_steering" filename="lLibgazebo_ros_planar_move.so">
+			<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<odometryRate>100.0</odometryRate>
+			<robotBaseFrame>base_footprint</robotBaseFrame>
+			<publishTF>true</publishTF>
+		</plugin>
+		</gazebo>
+	</xacro:macro>
+</robot>
