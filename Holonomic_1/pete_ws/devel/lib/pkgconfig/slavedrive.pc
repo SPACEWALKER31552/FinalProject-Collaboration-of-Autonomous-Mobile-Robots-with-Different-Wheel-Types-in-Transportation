@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/pete_ws/devel
+
+Name: slavedrive
+Description: Description of slavedrive
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/pete_ws/devel
+
+Name: holo_description
+Description: Description of holo_description
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: robot_state_publisher urdf

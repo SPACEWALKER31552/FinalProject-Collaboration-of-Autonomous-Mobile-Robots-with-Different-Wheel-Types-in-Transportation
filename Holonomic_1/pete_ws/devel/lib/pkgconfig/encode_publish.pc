@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/pete_ws/devel
+
+Name: encode_publish
+Description: Description of encode_publish
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
