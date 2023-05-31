@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+        <!-- spawn map floor 9 --> 
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        	<arg name="world_name" value="$(find floor9)/world/floor9.world" />
+        	<arg name="debug" value="false" />
+        	<arg name="gui" value="true" />
+        	<arg name="paused" value="false" />
+        	<arg name="use_sim_time" value="true" />
+        </include>
+        
+
+  	<include file="$(find urdf_2)/launch/spawnholo.launch">	
+  		<arg name="x_pos" value="5.0"/>
+  		<arg name="y_pos" value="-7.5"/>
+  		<arg name="z_pos" value="0.0"/>
+  		<arg name="model" value="holo1" />
+  	</include>
+       
+       
+</launch>

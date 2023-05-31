@@ -1,0 +1,7 @@
+<launch>
+
+  <node name="masterkinematicnon" pkg="masterkinematic" type="masterkinematicnon.py"/>
+  <node name="masterkinematicholo" pkg="masterkinematic" type="masterkinematicholo.py"/>
+  <node name="masterkinematicmain" pkg="masterkinematic" type="masterkinematicmain.py"/>
+
+</launch>

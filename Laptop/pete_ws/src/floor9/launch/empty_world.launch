@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+        <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+</launch>
