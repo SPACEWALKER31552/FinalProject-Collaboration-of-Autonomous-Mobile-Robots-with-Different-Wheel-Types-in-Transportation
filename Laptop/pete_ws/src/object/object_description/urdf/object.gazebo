@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot>
+ <gazebo reference="base_link">
+      <material>Gazebo/light_grey</material>
+      <gravity>true</gravity>
+    </gazebo>
+ 
+</robot>
