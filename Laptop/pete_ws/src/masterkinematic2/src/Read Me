@@ -1,0 +1,3 @@
+Run In Real World Test consists of
+1.Manual --> Use human eye as feedback use file "masterkinematic2" and "masterkinematic2backward"
+2.Auto --> Usee gazebo to command the robots use file "masterkinematicgazebo" and "masterkinematicgazebo2"
