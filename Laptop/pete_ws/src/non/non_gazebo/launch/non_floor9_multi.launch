@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="masterkinematicnon" pkg="masterkinematic" type="masterkinematicnon.py"/>
+
+
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <!-- <arg name="world_name" default="$(find holo_gazebo)/worlds/holo.world" /> -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find floor9)/world/floor9.world" />
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <arg name="paused" value="false"/>
+  </include>
+  
+  <!-- spawn "non1" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non1" />
+    <arg name="pose_x" value="5" />
+    <arg name="pose_y" value="-7.5" />
+  </include>
+
+  <!-- spawn "non2" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non2" />
+    <arg name="pose_x" value="3.4" />
+    <arg name="pose_y" value="-6.935" />
+  </include>
+  
+    <!-- spawn "holo3" robot -->
+  <include file="$(find non_gazebo)/launch/spawn_one_non.launch">
+    <arg name="robot_name" value="non3" />
+    <arg name="pose_x" value="3.4" />
+    <arg name="pose_y" value="-8.065" />
+  </include>
+
+
+<include file="$(find object_description)/launch/object_description.launch" />
+  <arg name="obpose_x" default="4.18" />
+  <arg name="obpose_y" default="-7.5" />
+  <arg name="obpose_z" default="5.0" />
+  
+  <node name="object_spawner" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -model object -param object_description -x $(arg obpose_x) -y $(arg obpose_y) -z $(arg obpose_z)" />
+</launch>
